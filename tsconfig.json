@@ -1,0 +1,23 @@
+{"compilerOptions": {
+    "lib": ["es2017"],
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "sourceMap": true,
+    "strict": true,
+    "outDir": "./lib",
+  },
+  "include": [
+    "./src/**/*"
+, "src/index.ts"  ],
+  "exclude": [
+    "node_modules/",
+    "**/*.spec.ts"
+  ]
+}

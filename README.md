@@ -18,11 +18,13 @@ npm install auth-saga-flow
 ```
 
 ### Valiables 
+```
 accessToken 
 refreshToken
 accessTokenExpiredIn - the time when the acessToken expires
 refreshTokenExpiredIn - the time when the refreshToken expires
 For this flow it needed to separate tokens and expires times for store it in localstorage
+```
 
 ## Methods
 ``` 
@@ -36,7 +38,6 @@ Example: iFetch('http://localhost:5000/login', 'POST', body, {credentials:'same-
 Import method:
 ```
 import {iFetch} from 'redux-saga-flow'
-```
 ```   
 
 ### Saga methods 
@@ -80,8 +81,9 @@ export default function* clientRequestSagaWatcher () {
     yield takeEvery(FETCH_REQUEST, fetchRequest);
 }
 ```
-
+```
 ##Redux 
+```
 ### Redux Actions 
 ```
 REFRESH_TOKEN 

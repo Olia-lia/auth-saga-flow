@@ -34,7 +34,8 @@ url - api adress
 method - method of REST API request
 body - optional parameter
 options - optional parameter, default is an empty object.
-Example: iFetch('http://localhost:5000/login', 'POST', body, {credentials:'same-origin'})
+Example: iFetch('http://localhost:4200/login', 'POST', body, {credentials:'same-origin'})
+```
 Import method:
 ```
 import {iFetch} from 'redux-saga-flow'

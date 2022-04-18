@@ -176,11 +176,13 @@ import {UnathorizedError, ValidationError, ModalError} from 'auth/lib/errors'
 ```
 ### Error Types
 ValidationError (BadRequest) - form validation error, that comes from the server with status 400. 
-Example: {"message":"validationError","errors":[{"field":"username","type":"required","message":"required field"},{"field":"password","type":"required","message":"required field"}]}
+Example:
+```
+{"message":"validationError","errors":[{"field":"username","type":"required","message":"required field"},{"field":"password","type":"required","message":"required field"}]}
 ModalError - error that should be shown to the user
 UnathorizedError (401)
 RedirectError
-
+```
 Example of Client Code: 
 ```
 export default function* errorSaga () {

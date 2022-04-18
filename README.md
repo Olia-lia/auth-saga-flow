@@ -88,7 +88,6 @@ export default function* clientRequestSagaWatcher () {
 ```
 ##Redux 
 ### Redux Actions 
-```
 REFRESH_TOKEN 
 The client needs to implement the REFRESH_TOKEN function, that return a new token pair, and put it to Sagawatcher. 
 Example inClient Code:

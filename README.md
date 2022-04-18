@@ -42,7 +42,7 @@ import {iFetch} from 'redux-saga-flow'
 ```   
 
 ### Saga methods 
-```
+
 fetchRequest({url, method, body?, {options}}) - function-generator, that implements a request to the server.
 import method
 ```
@@ -52,7 +52,8 @@ import {fetchRequest} from 'auth-saga-flow/lib/sagas';
 For using this method a function in client code it necessary set tracking function, Client can import the default action FETCH_REQUEST.
 ```
 import {FETCH_REQUEST} from 'auth-saga-flow/lib/redux'
-
+```
+```
 export default function* clientRequestSagaWatcher () {
     yield takeEvery(FETCH_REQUEST, fetchRequest);
 }

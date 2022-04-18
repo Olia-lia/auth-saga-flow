@@ -86,14 +86,13 @@ export default function* clientRequestSagaWatcher () {
     yield takeEvery(FETCH_REQUEST, fetchRequest);
 }
 ```
-```
 ##Redux 
-```
 ### Redux Actions 
 ```
 REFRESH_TOKEN 
 The client needs to implement the REFRESH_TOKEN function, that return a new token pair, and put it to Sagawatcher. 
-Example:
+Example inClient Code:
+```
 const BASE_URL = 'http//localhost:3000'
 
 const refreshNewToken = () => {
@@ -116,6 +115,7 @@ function* refreshNewTokenSagaWorker(action) {
         yield put ({type: SET_TOKENS, payload: response}); 
     }
 }
+```
 
 Action SET_TOKEN in this case is recommended name for action that dispatch a method of saving tokens. Еhe method that implements the saving of tokens must be imported from the library (setToken)
 

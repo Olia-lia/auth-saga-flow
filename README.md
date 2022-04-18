@@ -42,10 +42,12 @@ import {iFetch} from 'redux-saga-flow'
 ```   
 
 ### Saga methods 
-Import methods from redux-saga:
 ```
 fetchRequest({url, method, body?, {options}}) - function-generator, that implements a request to the server.
-Import method: import {fetchRequest} from 'auth-saga-flow/lib/sagas'
+import method
+```
+import {fetchRequest} from 'auth-saga-flow/lib/sagas';
+```
 
 For using this method a function in client code it necessary set tracking function, Client can import the default action FETCH_REQUEST.
 ```

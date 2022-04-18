@@ -172,7 +172,7 @@ function* logoutSaga(action: any) {
 ```
 ## Errors 
 ```
-import {UnathorizedError, ValidationError, ModalError} from 'auth/lib/errors'
+import {UnathorizedError, ValidationError, ModalError} from 'auth-saga-flow/lib/errors'
 ```
 ### Error Types
 ValidationError (BadRequest) - form validation error, that comes from the server with status 400. 

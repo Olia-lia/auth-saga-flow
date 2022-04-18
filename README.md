@@ -90,6 +90,9 @@ export default function* clientRequestSagaWatcher () {
 ### Redux Actions 
 REFRESH_TOKEN 
 The client needs to implement the REFRESH_TOKEN function, that return a new token pair, and put it to Sagawatcher. 
+```
+import {REFRESH_TOKEN} from 'auth-saga-flow/lib/redux'
+```
 Example inClient Code:
 ```
 const BASE_URL = 'http//localhost:3000'

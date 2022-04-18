@@ -31,13 +31,12 @@ options - optional parameter, default is an empty object.
 Example: iFetch('http://localhost:5000/login', 'POST', body, {credentials:'same-origin'})
 Import method:
 ```
-import {iFetch} from '***'
+import {iFetch} from 'redux-saga-flow'
 ```
 ```   
 
 ### Saga methods 
-to plug saga-watchers: 
-```
+
 Import methods from redux-saga: 
 
 fetchRequest({url, method, body?, {options}}) - function-generator, that implements a request to the server.
@@ -50,7 +49,7 @@ function* getUsers() {
 ```
 ## Redux 
 ### Redux Actions 
-``
+```
 REFRESH_TOKEN 
 the client needs to implement the REFRESH_TOKEN function, that return a new token pair, and put it to Sagawatcher. 
 Example:

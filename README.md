@@ -12,6 +12,10 @@ react
 redux
 reux saga
 ```
+Download module: 
+```
+npm install auth-saga-flow
+```
 
 ### Valiables 
 accessToken 
@@ -36,22 +40,52 @@ import {iFetch} from 'redux-saga-flow'
 ```   
 
 ### Saga methods 
-
-Import methods from redux-saga: 
-
+Import methods from redux-saga:
+```
 fetchRequest({url, method, body?, {options}}) - function-generator, that implements a request to the server.
-To call a function in client code it necessary to create function-generator with
-Example: 
-function* getUsers() {
-    const response= yield call(fetchRequest, {url: `${BASE_URL}/${endpoint}`, method: 'GET'});
-    yield put ({type: USERS_SUCCEEDED, payload: response});
+Import method: import {fetchRequest} from 'auth-saga-flow/lib/sagas'
+
+For using this method a function in client code it necessary set tracking function, Client can import the default action FETCH_REQUEST.
+```
+import {FETCH_REQUEST} from 'auth-saga-flow/lib/redux'
+
+export default function* clientRequestSagaWatcher () {
+    yield takeEvery(FETCH_REQUEST, fetchRequest);
 }
 ```
-## Redux 
+Example in Clien Code: 
+function* getUsers() {
+    try{
+        const response= yield call(fetchRequest, {url: `${BASE_URL}/${endpoint}`, method: 'GET'});
+        yield put ({type: USERS_SUCCEEDED, payload: response});
+    }
+      catch(error) {
+        yield put({type: USERS_FAILED, payload:error})
+        yield put({type: HANDLE_ERROR, payload: error});
+    }
+}
+```
+To send multiple requests, it is recommended to use the non-blocking effects of redux-saga
+Example in Client code: 
+```
+function* fetchRequests() {
+    yield fork(getUsers);
+    yield fork(getAvatars);
+    yield fork(getComments);
+    yield fork(getMessage);
+}
+the saga-watcher function in this case would look like this: 
+export default function* clientRequestSagaWatcher () {
+    yield takeLatest(FETCH_REQUESTS, fetchRequests);
+    yield takeEvery(FETCH_REQUEST, fetchRequest);
+}
+```
+
+##Redux 
 ### Redux Actions 
 ```
 REFRESH_TOKEN 
-the client needs to implement the REFRESH_TOKEN function, that return a new token pair, and put it to Sagawatcher. 
+The client needs to implement the REFRESH_TOKEN function, that return a new token pair, and put it to Sagawatcher. 
 Example:
 const BASE_URL = 'http//localhost:3000'
 

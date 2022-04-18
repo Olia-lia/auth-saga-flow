@@ -59,6 +59,7 @@ export default function* clientRequestSagaWatcher () {
 }
 ```
 Example in Clien Code: 
+```
 function* getUsers() {
     try{
         const response= yield call(fetchRequest, {url: `${BASE_URL}/${endpoint}`, method: 'GET'});

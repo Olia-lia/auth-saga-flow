@@ -88,7 +88,7 @@ export default function* clientRequestSagaWatcher () {
 ```
 ##Redux 
 ### Redux Actions 
-REFRESH_TOKEN 
+#### REFRESH_TOKEN 
 The client needs to implement the REFRESH_TOKEN function, that return a new token pair, and put it to Sagawatcher. 
 ```
 import {REFRESH_TOKEN} from 'auth-saga-flow/lib/redux'
@@ -120,18 +120,20 @@ function* refreshNewTokenSagaWorker(action) {
 ```
 
 Action SET_TOKEN in this case is recommended name for action that dispatch a method of saving tokens. Еhe method that implements the saving of tokens must be imported from the library (setToken)
-
+```
 function* SagaWatcher ={
     yield takeEvery(REFRESH_TOKEN, refreshNewTokenSagaWorker);
 } 
-``````
-Methods setTokens and logout
 ```
+
+#### Methods setTokens and logout
 Method setTokens methods implements savind tokens in localStostorage. Method logout clears localstorage from tokens. 
 
+```
+import {setTokens, logout} from 'auth-saga-flow/lib/index'
+```
 Example login flow in client code:
-
-
+```
 export default function* authSagaWatchers () {
     yield takeEvery(LOGIN_REQUEST, loginSaga);
     yield takeEvery(LOGOUT, logoutSaga);
@@ -168,23 +170,20 @@ function* logoutSaga(action: any) {
         yield put({type: HANDLE_ERROR, payload: error});
     }
 }
-
+```
 ## Errors 
 ```
-For import error types: 
-import {UnathorizedError, ValidationError, ModalError} from '????/lib/errors'
+import {UnathorizedError, ValidationError, ModalError} from 'auth/lib/errors'
 ```
 ### Error Types
-```
 ValidationError (BadRequest) - form validation error, that comes from the server with status 400. 
 Example: {"message":"validationError","errors":[{"field":"username","type":"required","message":"required field"},{"field":"password","type":"required","message":"required field"}]}
 ModalError - error that should be shown to the user
 UnathorizedError (401)
 RedirectError
-```
 
 Example of Client Code: 
-
+```
 export default function* errorSaga () {
     yield takeEvery(HANDLE_ERROR, errorHandlerSaga);
  
@@ -202,7 +201,7 @@ function* errorHandlerSaga (action) {
         yield put({type: LOGOUT});
     }
 }
-
+```
 
 example of configuration file:
 ```
